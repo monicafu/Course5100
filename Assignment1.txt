@@ -1,0 +1,664 @@
+Problem1 : Hiking 
+
+Things(Object/Entity) : 
+
+People :
+	Data : name, address, phone, 
+	Behavior: RentCar, FilltheGas, eat, buy, play, bookHotel
+
+Car:
+	Data : brand, color, type, volume, gasTank
+	Behavior :   forward, Stop, backward, playMusic, navigation
+
+CarRentWebsite :
+	Data : brand, address, phone, price, mobile app, ip address
+	Behavior: searchCar, addToCart, compare, addToList, payment, 
+
+GasStation:  
+	Data : name, address, phone, size, gasMachine
+	Behavior : SelfHelpFillGasService, paymentService  
+	
+Internet : 
+	Data :  rentCarWebsites, hotelWebsites,orderWebsites: Group of Websites
+	Behavior : connectToWebsites
+
+searchWebsites:
+	Data: URL
+	Behavior: searchforRentCarWebsites,  searchforHotelWebsites, searchforRestaurant 
+
+Restaurant:
+	Data : name, address, phone, type, menu, waiter, cooker, cashier, websites
+	Behavior: order, delivery, checkout, 
+
+Park: 
+	Data : name, address, phone, TicketService, openTime, CloseTime, websites, 
+	Behavior : openDoor, closeDoor
+
+Hotel: 
+	Data : name, address, phone, NumberofRooms, TypeofRooms, websites 
+	Behavior : checkIn, checkout, payTheFee
+
+CreditCard:
+	
+	Data : Number, name, company, expiry, security code
+	Behavior : pay, lendMoney
+
+creditCardCompany:
+	Data: bill, transactionInformation
+	Behavior : authorizeTransaction
+
+
+
+
+Sequence of invoking behaviors on Objects:
+
+People  Monica, Stella, 
+CarRentServiceCompany  ReachNow,
+Car  BMW3Series,
+GasStation  Shell,
+Restaurant Daniel’s Broiler,
+Park MountainRainier Park,
+Hotel QualityInn, 
+creditCardCompany visa,
+
+
+
+
+1.1.	Rent a ReachNow to drive to mountain rainier on weekends with friends
+		if  Internet.isAvailable 
+			Monica. rentCar --->  Internet,searchWebsites: rentWebsites
+			pageNumber = 1
+		Loop 
+			Monica. findRentCarWebsites   
+   			if findRentCarWebsites ==  ReachNow
+	   			Monica. findDesiredCar ---> brand,color,type,volume :Car 
+				if Car.brand== BMW3Series
+                	Monica.addTocart 
+	     		else
+		 			pageNumber = pageNumber + 1
+				endif
+			endif
+		endLoop
+
+			if Monica.creditCardisOK
+				Monica. Pay  --> Brand, startDate,EndDate, price :ShoopingListConformation
+			else 	
+				Monica. cannotRentCar
+		else 
+			Monica.waitForInternetAvailable
+
+
+
+1.2.	On the way, fill the gas
+
+	Monica. goGasStation -->  BMW3Series.navagation or mobile.googleMap
+	Loop
+		findNearbyGasStation
+		if navigationisRight --> name, address: GasStation
+			Shell = GasStation
+			Monica.stopCar 
+		if Monica.InsertCreditCard
+			While(! BMW3Series. gasTank ==full)
+				gasMachine. OutGas
+				payMentSystem.count
+			endLoop
+			Shell.payService
+			Monica. Pay  --> creditCardCompany  
+		else 	
+			Monica. cannotFillTheGas
+    	endif
+
+	else
+		Monica.findTheOtherWay
+	endif
+
+
+1.3.	On the way, eat at restaurant for lunch
+
+	if Internet.isavailable
+		Monica. searchforRestaurant --->  Internet, searchWersite,:restaurantWebsites
+	Loop 
+		findDesirableRestaurant  ---> name, address, type, menu : Restaurant
+		Daniel’s Broiler = Restaurant
+		if RestaurantisOpen 
+		     Monica. driveToRestaurant  
+		else
+		     pageNumber = pageNumber+1;
+		endif
+	endloop
+	
+	loop desireableFood == American food
+		 Stella. orderFood  ---> foodType,picture,flavor,price：FoodMenu
+	endloop
+	
+	if  Kitchen.FoodIsReady
+		 waiter.serveFood
+		 Monica.eat
+		 Stella.eat
+	else
+		waitForFood
+	
+	if Monica == finished && Stella.eat == finished
+			waiter.payService  ——>foodsName,number,price,tax,tips: Bill
+			Monica.payTheBill  ---> creditCardCompany 
+			  
+	else 
+		Monica.eat, Stella.eat
+	endif
+
+
+
+1.4.	Buy the ticket to get into the park
+
+		Monica.searchTheTicket --->  Internet,searchWebsites :TravelWebsites   
+		Loop 
+			Monica.searchParkInfo ---> name, number, phone, paymentInfo, ExpireDate,openTime: Park 
+			if ParkInfoisRight && Monica.creditCardisAvilable
+					MountainRainier Park = park
+					Monica.buy ---> address, TravelerName,price,Date：TicketConformation
+					Monica.pay ——> creditCardCompany 
+			else 
+					Monica.cannotBuyTicket
+			endif
+		endLoop
+		
+
+
+1.5.	Book a hotel or check in the hotel.
+
+		Monica.searchHotel --->  Internet, searchWebsites :BookingWebsites   
+		Loop 
+			Monica.searchHotelInfo ---> name, number, phone, NumberofRooms, TypeofRooms,AvilableRooms: Hotel
+			if HotelInfoisRight && Monica.creditCardisAvilable
+					Monica.bookHotel ---> Name, TypeofRoom,checkIn-Date :TicketConformation 
+					Monica.pay    —>  creditCardCompany
+			else 
+					Monica.cannotBuyTicket
+			endif
+		endLoop
+		
+
+
+Problem 2. Organise a career fair(Suppose you are the organiser) 
+
+
+Things(Object/Entity) : 
+
+	Organiser:
+		Data : name, address, type, phone, age  
+		Behavior : PublishCareerFair, contactCompany, makeContractWithCompany，setCareerFairDate，setCareerFairAddress, sendEmailToJobseekers, startCareerFair, endCareerFair
+
+	Company/Employer: 
+		Data : name, address, careerType, phone, email, employeeNumber, locations 
+		Behavior: PublishPositionOnInternet, findEligibleEmployeer, judgeResumeApproved, giveInterviewChance, 
+	Internet:
+		Data : Group of websites
+		Behavior : searchForJobWebsites,
+	Job:
+		Data : position, type(internship, full-time), salary, requirement, 
+		Behavior: hasEmptyPosition
+	JobPosition:
+		Data : software engineer,  software testing, user experience designer, number
+		Behavior : 
+	CareerFair:
+		Data: CompanyName, representative, Date, address, schedule
+		Behavior: 
+	JobWebsite
+		Data : URL, name, contactInfo, Jobs, 
+	
+	JobSeeker:
+		Data : name, birth, gender, phone, address, email, resume, educationLevel, experience, skills 
+		Behavior: searchForJobs, register, attendCareerFair, handResume, interview 
+	Resume:
+		Data: bioInfo, contactInfo, educationInfo, experience
+		Behavior 
+
+Organisier  NEU,
+Company    Amazon, Facebook, google, Starbucks, Airbnb, Alibaba
+CareerFair NEU CareerFair,
+JobWebsite  Linkedin, Eventbrite,
+JobSeeker  Monica, 
+			
+	
+Sequence of invoking behaviors on Objects:
+
+	2.1 contact companies and set a available date
+		if Internet.isAvailable   
+			NEU.findCompanies  --> Internet collection of Website
+			Linkedin = Websites
+		Loop
+			NEU.findDesirableCompanies
+			if companies.hasAvailablePosition —> software engineer, software testing, user experience designer: JobPosition
+				NEU.contactCompany   —-> Amazon, Facebook, google, Starbucks, Airbnb, Alibaba: Company
+				if company.desireToCareerFair 
+					NEU.setCareerFairDate  
+					NEU.setCareerFairAddress
+					NEU.makeContractWithCompany  —-> CompanyName, representative, Date, address, schedule: CareerFair
+
+				else
+					findOtherCompanies
+				endif
+			endif
+		endLoop
+			NEU.cannotFindCompany
+		endif
+		
+	
+	2.2 publish a career fair event information on the Internet
+			if Internet.isAvailable
+			    NEU.searchForWebsites  --> Internet collection of Website
+			 Loop 
+				NEU.findDesirableWebsites
+				Eventbrite = JobWebsite 
+			    if JobWebsite.isAvailable
+			    	NEU.PublishCareerFairInformation  -->Date, time, address, info, CompanyName, companyNumber:CareerFair
+			    else
+			    	findOtherJobWebsites
+			    endif
+			endloop
+				NEU.cannotPublishCareerFairInfo
+			endif
+			    
+			
+	2.3 make the announcement public and send email to all students/jobseekers 
+			if Internet.isAvailable
+				NEU. getJobWebsiteURL ---> registerPage, homepage :Eventbrite
+				NEU. editCareerFairInformation —-> CompanyName, Date, time, address,RegisterURL: CareerFair
+			Loop    
+				NEU.sendEmailToALLJobseekers
+				if Jobseekers receive email
+					Jobseekers.register   ---> conformationInformation : Eventbrite	
+				else
+					
+				endif
+			endLoop
+				NEU. cannotSendEmail
+			endif
+				
+			
+	2.4 organize interview with jobseeker and company
+			if NEU.startCareerFair —>Date, time, address, info, CompanyName, companyNumber:CareerFair
+			Loop
+				Monica. attendCareerFair
+			   	Amazon. findEligibleEmployeer —-> position, type, requirement: Jobs  
+				Monica. handResume  ——> bioInfo, contactInfo, educationInfo, experience: Resume
+				if job. hasEmptyPosition || Amazon.judgeResumeApproved
+					Amazon. giveInterviewChance
+					Monica.interview
+				else
+					Monica.cannotInterview
+				endif
+			endLoop
+
+				NEU.endCareerFair
+			endif
+
+				
+				
+					
+
+
+Problem 3. Order Pizza from Pizza Hut
+
+
+Objects : 
+
+People :
+	Data : name, address, phone, 
+	Behavior: findPizzaHut, searchOrderWebsites, choosePizza, OrderPizza, confirmOrderInfo, pay
+
+Internet : 
+	Data :  Yelp, Delivery, OrderUp: Group of Websites
+	Behavior : searchForElctronicWebsites
+
+Websites:
+	Data: URL, address, productsIntroduction, menu
+	Behavior: sign in, register, search, order, pay, delivery, carryout
+
+Pizza:
+	Data : flavor, size, type, popularity
+	Behavior :
+
+OrderInformation:
+	Data : Name, address, date, time, delivery/carryout, pizzaInfo, price, tax
+	Behavior:
+
+CreditCard:	
+	Data : Number, name, company, expiry, security code
+	Behavior : pay, lendMoney
+
+creditCardCompany:
+	Data: bill, transactionInformation
+	Behavior : authorizeTransaction, pay
+
+
+
+Sequence of invoking behaviors on Objects:
+
+People  Monica, 
+Websites PizzaHut,
+Pizza  cheesePizza,
+CreditCard  card,
+creditCardCompany visa,
+
+	3.1 find a pizza Hut Website
+		if Internet.isAvailable
+			Monica.searchOrderWebsites —-> Internet, pageNumber,Collection of websites : websites 
+			pageNumber = 1;
+		Loop
+			Monica.findDesirableWebsites
+			if websites = PizzaHut
+			   Monica. choosePizzaHut ——>productsIntroduction, menu: PizzaHut
+			else 
+			   pageNumber += 1;
+			endif
+		endLoop
+			Monica.cannotFindDesirableWebsites
+		endif
+
+
+	3.2 choose for Pizza type and order a pizza  and order confirmation 
+		if  PizzaHut.showMenu
+			Loop
+				Monica.findDesirablePizza
+		    		Monica.choosePizza  ——>  flavor, size, type, popularity: Pizza
+				if Pizza = cheesePizza  && cheesePizza.isAvaibilable
+					Monica.orderPizza
+					Monica. confirmOrderInfo —->Name, address, date, time, delivery/carryout, pizzaInfo, price, tax :OrderInformation
+				else 
+					Monica.chooseOtherPizza
+				endif
+			endLoop
+			Monica.cannotFindDesirablePizza
+		endif
+
+	3.3 make a payment with the CreditCard 
+
+		if CreditCard.isAvailable
+			Loop
+				Monica.pay  
+				visa = creditCardCompany  ——>  transactionInformation  : creditCardCompany
+					if visa. authorizeTransaction == true
+						visa.pay 
+						visa.sendBillInfo
+					else
+						visa.denyTransaction
+					endif
+			endLoop
+			Monica.useOtherCreditCard
+		endif
+				
+				
+	
+Problem 4. Design a code sharing platform (eg: Github).
+
+Objects:
+
+Users:
+	Data : name, email, phone, 
+	Behavior : createProject, createBranch, createNewFile, commitNewFile, newPullRequest, createPullRequest, chooseBranch, manageFile, searchFile, download, pullFile, mergePullRequest
+
+code sharing platform :
+	Data : URL, features, address, contactInfo, HomePage, repository, branch, commit,
+	Behavior : createNewFile, UploadFile, search, download, sendErrorMessage, createRepository, createBranch, createPullRequest, mergePullRequest, makeCommits 
+
+Repository:
+	Data: name, owner, description, authorize, ReadmeFile
+	Behavior: select, alter, delete 
+Branch:
+	Data : name, owner, type, version, relateRepository
+	Behavior: select, alter, delete
+
+pullRequest:
+	Data : branch, file, title, description
+	Behavior: 
+
+errorMessage:
+	Data : hintText, type, errorCode
+	Behavior: sendErrorToBackend
+
+File:
+	Data : name, size, kind, content, commit, extendDescription, DateCreated, DateModified,
+	Behavior : select, alter, delete
+
+Sequence of invoking behaviors on Objects:
+
+User  Monica, 
+code sharing platform GitHub,
+Repository Assignments,
+Branch edit-readme, 
+File HelloWorld,
+
+
+
+	4.1 Create a new repository
+	    if Monica.signInSuccess  ——> HomePage : GitHub
+		Loop 
+		   Monica.createProject —-> repository:GitHub
+		   Assignments = Repository
+	           if  Assignments.isEligible 
+		       GitHub.createRepository  ——> name, owner, description, authorize, ReadmeFile: Repository
+		   else 
+		       GitHub.sendErrorMessage  ——> hintText, type, errorCode: errorMessage
+		   endif
+		endLoop
+	      else		
+		Monica.cannotCreateProject
+	      endif
+		
+			
+	
+	4.2 Create a Branch and MergeBranch
+            If Monica.selectRepository —-> repository:GitHub
+		Loop     
+	            Monica.CreateBranch  ——> Branch: GitHub
+		    edit-readme = Branch
+		    if edit-readme.isFromMaster
+			GitHub.createBranch  —->name, owner, type, version, relateRepository: Branch
+	    	    else 
+		       GitHub.sendErrorMessage  ——> hintText, type, errorCode: errorMessage
+		   endif
+		endLoop
+	      else		
+		Monica.cannotCreateBranch
+	      endif
+		
+	4.3 create a NewFile and make a commit changes
+	     if Monica. createNewFile  ——> newFile: GitHub
+	         Loop
+			Monica. editNewFile  —-> name, content : File
+			Monica.commitNewFile  —-> extendDescription :File
+			if Branch == master
+		           Monica.chooseBranch   ——> name, type : Branch
+			else
+			   Monica.createBranch—-> name, relateRepository: Branch
+			endif
+			GitHub.createFile
+		endLoop
+		Monica.cannotCreateCommit
+
+	4.4 open a pull files Request
+	     if Monica.newPullRequest  ——> pullRequest : GitHub
+		Loop
+			if brach.exist 
+				Monica.chooseBranch  -—>name, type : Branch
+				Monica.lookOverChanges  ——> content, commit : File
+				Monica. createPullRequest —-> title, description :PullRequest
+				GitHub.createPullRequest  ——> branch, file, title, description :PullRequest
+			else 
+				Monica.createBranch
+		endLoop
+	      else		
+		Monica.cannotCreatePullRequest
+	      endif
+
+
+	4.5 merge pull request to branch
+	    if Monica.mergePullRequest  ——> pullRequest : GitHub
+	       Loop
+			if brach.exist 
+				Monica. ConfirmMerge ——> name, type, relateRepository: Branch
+				GitHub.mergeBranch   ——>name, owner, type, version, relateRepository: Branch
+			else 
+			    Monica.createBranch
+			endif
+		endLoop
+	    else
+		Monica.cannotmergePullRequest
+	    endif
+		
+
+	
+
+Problem 5. Design a soft-drink/snacks vending machine.
+
+
+Objects:
+
+Customer :
+	Data : name, address, phone
+	Behavior: chooseFood, pickFood, pay, getChange
+
+machineOwner:
+	Data : name, address, phone
+	Behavior: stopVendMachine, restarMachine,  putInFood, managePrice, manageProduct, countSales, adjustmentShelf
+Food:
+	Data : name, type, price
+	Behavior: 
+
+VendMachine:
+	Data : snack, drink, inventory, foodShelf, paymentSystem, changeBox
+	Behavior: stopOnsaleStatus, countFoodNumber, exitFood, countChange, giveChange, countSale, updateInventory
+
+foodShelf:
+	Data : foodName, price, picture, box 
+	Behavior: showFoodInfo
+
+Inventory:
+	Data : foodName, price, picture
+	Behavior: add, select, alter, delete 
+
+paymentSystem:
+	Data : cashPayment, creditCardPayment, moneyIn, moneyOut
+	Behavior: connectToBankSystem, choosePayment, countCash 
+
+accountingSystem :
+	Data : foodName, price, number, transactionTime 
+	Behavior: recordTransaction, statisticsSales
+
+saleReport:
+	Data : dailySales , monthlySales, yearSales
+	Behavior: 
+
+CreditCard:	
+	Data : Number, name, company, expiry, security code
+	Behavior : pay, lendMoney
+
+creditCardCompany:
+	Data: bill, transactionInformation
+	Behavior : authorizeTransaction, pay
+
+Sequence of invoking behaviors on Objects:
+
+machineOwner Peter,
+Customer  Monica,
+Food cokecola,
+foodShelf shelf,
+Inventory inverntory,
+VendMachine   machine,
+paymentSystem  payment,
+accountingSystem account,
+CreditCard card,
+creditCardCompany  visa,
+
+	5.1 machineOwner put in food 
+
+	if Peter.stopVendMachine = true 
+		machine.stopOnsaleStatus   
+		Loop 
+			if foodShelf.hasEmptyBox 
+				Peter.putInFood ——> foodName,Number: VendMachine
+				machine. countFoodNumber   ——>  name, type, price : Food
+				machine.updateInventory ——> foodName, price, picture: Inventory
+			else 
+				Peter. adjustmentShelf ——> box, foodName: foodShelf
+		endLoop
+		Peter.restarMachine  
+	else
+	    peter.cannotputInFood
+
+		
+
+	5.2 machineOwner change food number and price
+	if Peter.stopVendMachine = true
+		machine. stopOnsaleStatus 
+	Loop 
+		Peter. alterFoodNumber ——> number : food
+		Peter. alterFoodPrice  ——> price : food
+		machine. updateInventory ——> foodName, number, price: Inventory
+	endLoop
+	
+	Peter. restarMachine  
+
+		
+
+	5.3 customer buy food and pay with creditCard
+           if  machine. isOnSaleStatus
+		Monica. chooseFood   ——> name, price : shelf
+	   Loop
+		if Monica.chooseDesireableFood
+			Monica. pressBuyButton —-> name, number : Food
+			machine. countPrice  
+			Monica. confirmBill 
+			machine. updateInventory ——> foodName, number, price: Inventory
+			Monica.choosePayment ——>  creditCardPayment : paymentSystem
+			if card.isAvailable
+				Monica.insertCreditCard 
+				payment. connectToTheBank ——>bill, transactionInformation : creditCardCompany
+				account. recordTransaction —-> dailySales: saleReport
+				machine.exitFood
+				Monica.pickFood
+				Monica.moveOutCreditCard
+			else
+				Monica.cannotFinishPay
+			endif
+		else
+		     Monica.cancelFood
+	    endLoop
+		Monica.cannotBuyFood
+	   endif
+			
+
+	5.4 customer buy food and pay with cash
+
+           if  machine. isOnSaleStatus
+		Monica. chooseFood   ——> name, price : shelf
+	   Loop
+		if Monica.chooseDesireableFood
+			
+			Monica. pressBuyButton —-> name, number : Food
+			machine. countPrice 
+			Monica. confirmBill 
+			machine. updateInventory ——> foodName, number, price: Inventory
+			Monica.choosePayment ——>  cashPayment : paymentSystem
+			if monica.haveCash
+				Monica.putInCash  
+				if cash >= price
+					machine.countChange
+					machine.exitFood
+					Monica.pickFood
+					machine.giveChange
+					Monica.pickChange
+				else
+					Monica.cannotFinishPay
+				endif
+			else
+		    	    Monica.cancelFood
+			endif
+	    endLoop
+		Monica.cannotBuyFood
+	   endif
+
+
+
+	
