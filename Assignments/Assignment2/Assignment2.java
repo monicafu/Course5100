@@ -49,9 +49,9 @@ public class Assignment2 {
 	
 	public void printPerfectNumbers( int n ){
 		ArrayList<Integer> number = new ArrayList<Integer>();
-		if (n == 1)  number.add(Integer.valueOf(n));
+		if (n == 1)  return;
 		int sum = 0;
-		for (int j = 1; j <= n; j++) {
+		for (int j = 2; j <= n; j++) {
 			sum = 0;//when number is changed, sum must be 0;
 			for (int i = 2; i < Math.sqrt(j); i++) {
 				if (j % i == 0) {
