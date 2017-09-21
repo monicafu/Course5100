@@ -1,3 +1,7 @@
+/* Good Work
+ * Score 10
+ */
+
 Problem1 : Hiking 
 
 Things(Object/Entity) : 
