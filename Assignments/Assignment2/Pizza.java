@@ -1,3 +1,4 @@
+// score 2 + extra credit 0.5
 package INFO5100.Assignment2;
 
 /* 4. Write a java class called pizza with (Add detail as needed) : 
