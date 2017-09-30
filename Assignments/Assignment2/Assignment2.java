@@ -1,3 +1,7 @@
+/* good work
+ * score 8.5 + extra credit 3.5; Total score 10
+ */
+
 package INFO5100.Assignment2;
 import java.util.ArrayList;
 public class Assignment2 {
@@ -7,8 +11,8 @@ public class Assignment2 {
 	*  ii.  The first 36 hours worked are paid at a rate of 15.0, then the next 5 hours are paid at a rate of 15 * 1.5. 
 	*  Hours after that up to a max of 48 are paid at a rate of 15 * 2.
     	*/
-	
-	public double employeeSalary( double hours ){
+	// score 0.5
+	public double employeeSalary( double hours ){ // for input 48, expected output = 862.5, your output = 1440.0
 		double base = 15.0, salary = 0.0;
 		double[] rate = {1.0,1.5,2.0};
 		double MAX_HOUR = 48.0;
@@ -29,6 +33,7 @@ public class Assignment2 {
 	 *  i. function takes an integer as input and returns its sum of digits.
 	 *	ii. for example input = 37, sum = 3+7 = 10, sum = 1+0 = 1. result = 1.
 	 * */
+	// score 2
 	public int addDigits( int input ){
 		if (input >= 0 && input < 10)
 			return input;
@@ -46,7 +51,7 @@ public class Assignment2 {
 	 *  ii. For example: 6 is the first perfect number, Proper divisors of 6 are 1, 2, 3. 
 	 *	Sum of its proper divisors = 1 + 2 + 3 = 6.
 	 * */
-	
+	// score 2
 	public void printPerfectNumbers( int n ){
 		ArrayList<Integer> number = new ArrayList<Integer>();
 		if (n == 1)  return;
@@ -80,7 +85,7 @@ public class Assignment2 {
 	 *  Other than the edges the inner part of the triangle should be empty.
 	 * ii. For example input is 6. the function should print
 	*/
-	
+	// extra credit 2
 	public void printIsoscelesTriangle( int n ){
 		for(int i= 0 ; i < n; i++) {
 			for(int j = 0; j < i; j++) {
