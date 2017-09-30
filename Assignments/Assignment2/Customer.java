@@ -1,3 +1,4 @@
+// score 2 + extra credit 1
 package INFO5100.Assignment2;
 import java.util.*;
 /*  5. Write a java class called customer (Add detail as needed) : 
