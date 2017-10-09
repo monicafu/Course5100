@@ -1,3 +1,6 @@
+/* Good Work
+ * score 9.5 + extra credit 1; Total score 10
+ */
 package INFO5100.Assignment3;
 import java.util.*;
 public class Assignment3 {
@@ -8,7 +11,7 @@ public class Assignment3 {
 		ii. Should return the input string after omitting the vowels.
 	 * 
 	 */
-	public String removeVowelsFromString(String input){
+	public String removeVowelsFromString(String input){ // score 2
 		int len =input.length();
 		StringBuilder str = new StringBuilder();
 		for ( int i = 0 ; i < len; i++) {
@@ -29,9 +32,9 @@ public class Assignment3 {
 	
 	/* 4. Write a java function to check if two strings are Anagrams or not. (Score 2)
 	 *  i. The function should take two input strings.
-	 *  ii. Should return a boolean ¡®true¡¯ if the inputs are Anagrams else return ¡®false¡¯.
+	 *  ii. Should return a boolean Â¡Â®trueÂ¡Â¯ if the inputs are Anagrams else return Â¡Â®falseÂ¡Â¯.
 	 */
-	public boolean checkIfTwoStringsAreAnagrams(String s1, String s2){
+	public boolean checkIfTwoStringsAreAnagrams(String s1, String s2){ // score 2
 			if( s1.length()!=s2.length() || s1 == null || s2 == null) return false;
 			int result = 1;
 			char[] c1= s1.toCharArray();
@@ -41,7 +44,7 @@ public class Assignment3 {
 			
 			String ss1= new String(c1);
 			String ss2= new String(c2);
-			if( ss1.length() == ss2.length()) {
+			if( ss1.length() == ss2.length()) { // u can use ss1.equals(ss2);
 				result = ss1.compareTo(ss2);
 			}
 			if (result == 0)
