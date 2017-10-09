@@ -1,3 +1,4 @@
+// score 4 + extra credit 1
 package INFO5100.Assignment3;
 
 public class Calculator {
@@ -5,7 +6,7 @@ public class Calculator {
 	/* 5.Create a calculator that can perform the following features. (Total Score 4) 
 	 * i. The calculator should be able to perform Addition, subtraction, multiplication, division. (Score 2)
 	   ii. Should be able to perform squareRoot, square, cube. (Score 1)
-       iii. Should be able to convert ¡®Fahrenheit-Celsius¡¯ , ¡®Feet-Inches¡¯. (Score 1)
+       iii. Should be able to convert Â¡Â®Fahrenheit-CelsiusÂ¡Â¯ , Â¡Â®Feet-InchesÂ¡Â¯. (Score 1)
 	   The calculator should be able to solve a quadratic equation and return the solution as array.
 		i. This function should take three arguments.
 		ii. For example, if quadratic equation is Ax2 + Bx + C. The function should take A,B,C as arguments
@@ -60,9 +61,9 @@ public class Calculator {
 		return String.format("%.2f",inch / 12);
 	}
 	
-	double[] quadratic(double a,double b, double c) {
+	double[] quadratic(double a,double b, double c) { // extra credit 1
 		
-		if( a == 0 ) {
+		if( a == 0 ) { // u should return 1 root if a == 0
 			System.out.println("This is a quadratic equation, so the A is not to be zero.");
 		}
 		
@@ -75,7 +76,8 @@ public class Calculator {
 			result[1] = x2;
 		}else {
 			System.out.println("Sorry, there is no solution to this equation.");
-			return result;
+			return result; 
+			// u have to return null/ empty array. in this case u are returning array that has 0.0 as values
 		}
 
 		return result;
