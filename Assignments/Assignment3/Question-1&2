@@ -1,10 +1,10 @@
 1. Find the error in the following code and explain in few lines why it is wrong. (Score 1)
-
+score 0.5, you missed that there two constructors that take same data types as inputs.
 Because we have different arguments constructor/overload constructors, and the compiler will not build the default constructor in the Book class, so the Book Class must have a no-arg constructor, we have to build the no-arg constructor: 
 
 like this:
 
-public Book(){
+public Book(){ // not required.
     //call superClass 
     super;
    //or set the default size
@@ -22,7 +22,7 @@ Public setName( String name){
 }
 
 2. Find the error in the following code and explain in few lines why it is wrong. (Score 1)
-
+// score 1
 The getTime() method return a wrong type, the return type should be String
 
 It will be fixed like this:
