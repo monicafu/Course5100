@@ -27,17 +27,4 @@ public class Candy extends DessertItem{
 		sb.append(DessertShoppe.centsToDollarsAndCents(getCost()));
 		return this.weight+"lbs."+"  "+"@"+pricePerPound/100+"/lb."+"\n"+sb.toString();
 	}
-	
-	
-	public static void main(String args[]) {
-		
-		ArrayList<String> a = new ArrayList<String>();
-		a.add("a");
-		a.add("-");
-		String c = "a";
-		System.out.println(a.contains(c));
-		
-		
-		
-	}
 }
