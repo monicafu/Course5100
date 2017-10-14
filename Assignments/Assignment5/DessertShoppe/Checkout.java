@@ -73,8 +73,4 @@ public class Checkout {
 		return sb.toString();		
 		
 	}	
-	
-	public static void main(String args[]) {
-		System.out.println("total cost cents to dollar"+DessertShoppe.centsToDollarsAndCents(1419.000));
-	}
 }
