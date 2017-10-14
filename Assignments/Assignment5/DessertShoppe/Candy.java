@@ -25,6 +25,6 @@ public class Candy extends DessertItem{
 			sb.append(" ");
 		}
 		sb.append(DessertShoppe.centsToDollarsAndCents(getCost()));
-		return this.weight+"lbs."+"  "+"@"+pricePerPound/100+"/lb."+"\n"+sb.toString();
+		return this.weight+" lbs."+"  "+"@"+pricePerPound/100+" /lb."+"\n"+sb.toString();
 	}
 }
