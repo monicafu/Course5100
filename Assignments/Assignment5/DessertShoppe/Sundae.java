@@ -16,18 +16,19 @@ public class Sundae extends IceCream{
 		String formatIceCreamName  = DessertShoppe.formatString(dessertName);
 		String formatTopName =DessertShoppe.formatString(topName);
 		StringBuilder sb = new StringBuilder();	
-		sb.append(formatIceCreamName+" with");
-		int spaceLength1 = DessertShoppe.WIDTH_ITEM_ONE_LINE-formatIceCreamName.length();
+		sb.append(formatTopName+" Sundae with");
+		int spaceLength1 = DessertShoppe.WIDTH_ITEM_ONE_LINE-formatTopName.length()-12;
 		for(int i = 0; i<spaceLength1 ;i++) {
 			sb.append(" ");
 		}
 		sb.append("\n");
-		sb.append(formatTopName);
-		int spaceLength2 = DessertShoppe.WIDTH_ITEM_ONE_LINE-formatTopName.length();
+		sb.append(formatIceCreamName);
+		int spaceLength2 = DessertShoppe.WIDTH_ITEM_ONE_LINE-formatIceCreamName.length();
 		for(int i = 0; i<spaceLength2 ;i++) {
 			sb.append(" ");
 		}
 		return sb.toString()+DessertShoppe.centsToDollarsAndCents(getCost());
+	}
 	}
 }
 
