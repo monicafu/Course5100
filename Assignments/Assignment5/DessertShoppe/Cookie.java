@@ -26,6 +26,6 @@ public class Cookie extends DessertItem{
 			sb.append(" ");
 		}
 		sb.append(DessertShoppe.centsToDollarsAndCents(getCost()));
-		return this.number+"lbs."+"  "+"@"+pricePerDozen/100+"/dz."+"\n"+sb.toString();
+		return (int)this.number+"  "+"@ "+DessertShoppe.taxFormat(pricePerDozen/100)+" /dz."+"\n"+sb.toString();
 	}
 }
