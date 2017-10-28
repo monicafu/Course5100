@@ -5,7 +5,7 @@ import java.util.*;
  * @date : 10/25/2017
  */
 
-public class Extra {
+public class Extra { // extra credit 10
 		
 	public ArrayList<Cell> findPath(int[][] maze){
 		
