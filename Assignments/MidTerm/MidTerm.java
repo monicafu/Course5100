@@ -9,7 +9,7 @@ public class MidTerm {
 	 * @param nums: input a int[] array 
 	 * @return : reversed even index number of the array
 	 */
-	public int[] reverseEvenIndices(int[] nums){
+	public int[] reverseEvenIndices(int[] nums){ // score 6
 		int low = 0, high = 0;
 		if ( nums.length % 2 == 0) {
 			high = nums.length -2;
@@ -36,7 +36,7 @@ public class MidTerm {
 	 * @param: the number of coins
 	 * @return: full staircase rows that can be formed
 	 */
-	public int arrangeCoins(int n){
+	public int arrangeCoins(int n){ // score 7
 		return (int) ((Math.sqrt(1 + 8.0 * n) - 1) / 2);		
 	}
 	
@@ -45,7 +45,7 @@ public class MidTerm {
 	 * param: input non- empty a int[] array
 	 * return: minimum moves to make every elements equal in array
 	 */
-    public int minMoves(int[] nums) {  
+    public int minMoves(int[] nums) {  // score 7
 	    if ( nums.length == 0)  return 0;
 	    int minNum = nums[0];
 	    int sum = 0;
@@ -62,7 +62,7 @@ public class MidTerm {
 	 * @return: possible ways
 	 * time O(m*n*x)
 	 */
-    public int countNumberOfPossibleWays(int m, int n, int x){
+    public int countNumberOfPossibleWays(int m, int n, int x){ // score 10
     		//when sum is low (< min value) or high( > max value) exit
     		if ( x < m || x > n*m ) return -1;
     		
