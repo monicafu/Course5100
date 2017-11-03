@@ -116,8 +116,6 @@ public class Game {
 		one.setWinningCard(firstPlay);
 		one.update(playerNum, firstPlay);
 		System.out.print("Player "+playerNum+"          "+ firstPlay);
-		/*for (int j = (playerNum+1) % PLAYERS; j < PLAYERS+(playerNum+1) % PLAYERS - 1; j++) {
-		 * int currPlayer =  j % PLAYERS;*/
 		for (int j = 1; j < PLAYERS; j++) {
 			playerNum =  (playerNum + 1) % PLAYERS;
 			Card c =players[playerNum].playACard(this, one);
@@ -156,8 +154,6 @@ public class Game {
 			Trick lastTrick = tricks[numberOfTricks-1];//not numberOfTricks--
 			playerNum = lastTrick.getWinner();
 			numberOfTricks++;
-			/*for (int j = (playerNum) % PLAYERS; j < PLAYERS + playerNum % PLAYERS; j++) {
-			 * int currPlayer =  j % PLAYERS;*/
 			for (int j = 0; j < PLAYERS; j++) {
 				playerNum =  (playerNum + 1) % PLAYERS;			
 				Card c =players[playerNum].playACard(this, oneTrick);
