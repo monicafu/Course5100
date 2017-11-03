@@ -38,24 +38,17 @@ public class Deck extends GroupOfCards{
 		int unshuffled = getCurrentSize();		
 		for (int i = unshuffled; i >= 0; i--) {
 			int randomIndex = (int)(Math.random()*unshuffled);
-			//must get the cards before remove!!!
-			//because!! once removed, the index is changed and not the same card!!
 			int num = cards[randomIndex].getNum();
 			int suit = cards[randomIndex].getSuit();
-			Card addCard = new Card(num,suit);
-			//System.out.println("------------------------------------");
-			//System.out.println("unshuffled size is = "+unshuffled);			
+			Card addCard = new Card(num,suit);			
 			removeCard(cards[randomIndex]);
-			//System.out.println("remove card index = "+(randomIndex)+",the card is = "+cards[randomIndex]);
 			addCard(addCard);
 			unshuffled--;
-			//System.out.println("add card  is = "+cards[randomIndex]);
-			//System.out.println("current size is = "+getCurrentSize());
-			//System.out.println("------------------------------------");
+
 			
 		}	
 	}
-	/* deal a card to one player£¬remove the card at index = 0;
+	/* deal a card to one playerÂ£Â¬remove the card at index = 0;
 	 * @param: 
 	 * @return: the index = 0 card*/
 	public Card dealCard() {	
