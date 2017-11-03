@@ -81,17 +81,5 @@ public class Trick extends GroupOfCards{
 			s += cards[k++]+"";
 		}
 		return s ;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }
