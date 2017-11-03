@@ -10,12 +10,6 @@ public class GroupOfCards {
 		currentSize = size;
 		}
 		
-	/* for testing add and remove 
-	 * int i = 0;
-		for ( int suit = 0; suit <= 3; suit++)
-			for (int num = 2; num <= 14; num++ )
-				cards[i++] = new Card(num,suit);	
-	*/
 	public Card[] getCard() {
 		return cards;
 	}
@@ -25,17 +19,12 @@ public class GroupOfCards {
 	/* add a card at the current filled part of the cards array
 	 * @param: create the add card*/
 	public void addCard(Card card) {
-	
-		//System.out.println("before add, the card is : "+cards[currentSize]);
 		for (int i = 0 ; i< cards.length ; i++) {
 			if ( cards[i] == null) {
 				cards[i] = card;
 				return;
 			}
 		}
-		//cards[i]= card;//new Card(num,suit);	
-		//cards[currentSize].setSuit(suit);
-		//System.out.println("after add, the card is : "+cards[currentSize]);
 		currentSize++;
 	}
 	
@@ -55,15 +44,8 @@ public class GroupOfCards {
 			}
 			i++;
 		}
-		//System.out.println("before move index: "+i+" card: "+cards[i]);
-		//System.out.println("before move index: "+index+" card: "+cards[index]);
-		//System.out.println("intend move index: "+(index+1)+" card: "+cards[index+1]);
-		//System.out.println("-----------------------");
-		//shift all array elements down by one place
 		for( int j = index; j < cards.length-1; j++) {
-			cards[j] =cards[j+1];
-			//System.out.println("move this index: "+(j)+" card: "+cards[j]);
-			//System.out.println("after this index: "+(j+1)+" card: "+cards[j+1]);			
+			cards[j] =cards[j+1];		
 		}
 		cards[cards.length-1] = null;
 		currentSize --;
@@ -72,16 +54,7 @@ public class GroupOfCards {
 	
 	//for test 
 	public static void display() {		
-		GroupOfCards deck = new GroupOfCards(52);
-		//System.out.println(deck);
-		//System.out.println(deck.cards[0]);
-		int num = deck.cards[9].getNum();
-		int suit = deck.cards[9].getSuit();
-		deck.removeCard(deck.cards[9]);
-		System.out.println(deck);
-		deck.addCard(new Card(num,suit));
-		System.out.println(deck);
-		
+		GroupOfCards deck = new GroupOfCards(52);		
 	}
 	public String toString() {
 		String s = "";
