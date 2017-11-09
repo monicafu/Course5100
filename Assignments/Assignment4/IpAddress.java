@@ -1,6 +1,6 @@
 package INFO5100.Assignment4;
 
-public class IpAddress {
+public class IpAddress { // score 2
 	private String dottleDecimal;//"216.27.6.136"
 	private int firstOctet;
 	private int secondOctet;
