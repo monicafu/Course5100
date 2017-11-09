@@ -16,7 +16,7 @@ public class Assignment4 {
 	
 	// input ="2-4A0r7-4k"   K=3
 	// output ="24-A0R-74K"
-	public String formatString(String str, int k) {
+	public String formatString(String str, int k) { // score 2
 		
 		if (str.isEmpty() || k < 0)  return "";
 		StringBuilder result;// store the result String
@@ -50,7 +50,7 @@ public class Assignment4 {
 	/* Question 5:Given an integer, convert it to a roman numeral. 
 	 * Input is guaranteed to be within the range from 1 to 3999.
 	 * */
-	public String intToRoman(int num) {
+	public String intToRoman(int num) { // score 2
 		//this two arrays's value are related to each other
 		String[] roman= {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
 		int[] intValue= {1000,900, 500,400,100, 90,  50, 40,  10, 9,   5,   4,  1};
@@ -72,7 +72,7 @@ public class Assignment4 {
 	 * There are two sorted arrays nums1 and nums2 of size m and n respectively. 
 	 * Find the median of the  two sorted arrays
 	 * */
-	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+	public double findMedianSortedArrays(int[] nums1, int[] nums2) {// extra credit 2
 		int i = 0, j = 0, k = 0;
 		int[] temp = new int[nums1.length+nums2.length];
 		//The null situations
