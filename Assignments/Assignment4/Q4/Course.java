@@ -1,7 +1,7 @@
 package INFO5100.Assignment4;
 
 import java.util.*;
-public class Course {
+public class Course { // score 2
 	private String courseName;
 	private int numberOfStudent;
 	private static int MAX_NUMBER_REGISTE= 10;
