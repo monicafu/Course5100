@@ -1,6 +1,6 @@
 package INFO5100.Assignment4;
 
-public class RockPaperScissorsGame {
+public class RockPaperScissorsGame { // score 2
 	
 	public static void main(String args[]){
 		Scissors s = new Scissors(5);
