@@ -6,28 +6,34 @@ public class ExtraCredit {
 	
 	  public static boolean findPartition (int arr[]) {
 	      int sum = 0;
-	      if (arr.length < 0) return false;
+	      int n = arr.length;
+	      if (n < 0) return false;
 	      for (int num : arr) {
-	    	  	 sum += num;
+	    	  sum += num;
 	      }
 	      
 	      if ( sum % 2 == 1) return false;
 	      sum /= 2;
-	      boolean[] dp = new boolean[sum+1];
-	      Arrays.fill(dp, false);
-	      dp[0] = true;
-	      
-	    	  for( int i = 0; i < arr.length; i++ ) {
-	    	  	for (int j = sum; j >= arr[i]; j--) {
-	    	  			if(j-arr[i] >= 0)
-	    	  				dp[j] = dp[j] || dp[j-arr[i]];
-	    	  		}
+	      boolean[][] dp = new boolean[sum+1][n+1];
+	      //when sum = 0
+	      for(int i = 0; i <= n; i++) {
+	    	  	dp[0][i] = true;
+	    	}
+		  
+	      for(int i = 1; i <= sum; i++) {
+	    	  for(int j = 1; j <= n; j++) {
+	    	  	if( i - arr[j-1] >=0 && i - arr[j-1] <=sum && dp[i-arr[j-1]][j-1]) {
+	    	  		dp[i][j] = true;
+	    	  	}else {
+	    	  		dp[i][j] = dp[i][j-1];
+	    	  	}
 	    	  }
-	      return dp[sum];
+	      }
+	      return dp[sum][n];
 	  }
 
 	public static void main(String[] args) {
-		int[] test1 = {1,5,11,5};
+		int[] test1 = {-1,5,11,5};
 		int[] test2 = {3,3,3,4,5};
 		int[] test3 = {1,10,21,5,14,9};
 		int[] test4 = {1,2,5};
