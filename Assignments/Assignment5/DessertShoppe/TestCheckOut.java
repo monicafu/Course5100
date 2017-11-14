@@ -1,3 +1,6 @@
+/* Good Work
+ * Score 9 + extra credit 2; Total score 10
+ */
 package INFO5100.Assignment5.DessertShoppe;
 
 public class TestCheckOut {
