@@ -10,7 +10,7 @@ import java.util.*;
  * */
 public class Checkout {
 	
-	Vector<DessertItem> desserts =new Vector<DessertItem>();
+	Vector<DessertItem> desserts =new Vector<DessertItem>(); // access should be private
 	
 	public void enterItem(DessertItem item) {
 		desserts.add(item);
@@ -61,7 +61,7 @@ public class Checkout {
 			sb.append(" ");
 		}
 		String taxFormat = DessertShoppe.taxFormat(tax);
-		sb.append(taxFormat);
+		sb.append(taxFormat); // tax amount is not right aligned in the display
 		sb.append("\n");
 		
 		sb.append("Total Cost");
