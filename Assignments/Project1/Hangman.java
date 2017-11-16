@@ -1,3 +1,7 @@
+/* Good Work
+ * Score 18
+ * you are not revealing a guess when it is appeared multiple times in the word. you are not printing previously guessed letters
+ */
 package INFO5100.Project1;
 import java.io.IOException;
 import java.util.*;
@@ -6,7 +10,7 @@ import acm.util.RandomGenerator;
 
 
 public class Hangman {
-	
+	// access should be private
 	public static String[] original = {"computer","algorithm","java","object","oriented","siva","harsha","professor","monica","student"};
 	GameHelper helper = new GameHelper();//get user input
 	private ArrayList<String> secretWordList = new ArrayList<String>();//the secret the word list
@@ -28,7 +32,7 @@ public class Hangman {
 	public void chooseWord(){	
 		
 		chooseWord =new ArrayList<String>();//error:forget to init, and create another local var chooseWord not the same as instance var
-		//²úÉúÒ»¸ö0--sizeÖ®¼äµÄ×ø±ê
+		//Â²ÃºÃ‰ÃºÃ’Â»Â¸Ã¶0--sizeÃ–Â®Â¼Ã¤ÂµÃ„Ã—Ã¸Â±Ãª
 		int random =(int)(Math.random()*secretWordList.size());
 		//System.out.println(random);
 		String ramdomWord = secretWordList.get(random);
