@@ -1,7 +1,7 @@
 package INFO5100.Assignment6.Exceptions;
 
 import java.io.*;
-public class Parse {
+public class Parse { // score 1
 	  public static void parse(File file) throws IOException {
 	      RandomAccessFile input = null;
 	      String line = null;
