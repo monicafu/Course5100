@@ -1,6 +1,6 @@
 package INFO5100.Assignment6.Exceptions;
 
-public class MyIndexOutOfBoundException extends Exception {
+public class MyIndexOutOfBoundException extends Exception { // score 2
 	
 	private int lowerBound = 0;
 	private int upperBound = 9;
