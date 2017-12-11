@@ -1,3 +1,7 @@
+/* Good Work
+ * Score 9 + extra credit 0; Total score 9
+ * Unite test for ATM are missing
+ */
 package INFO5100.Assignment6.ATM;
 
 import java.util.*;
