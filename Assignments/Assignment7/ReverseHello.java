@@ -5,7 +5,7 @@ package INFO5100.Assignment7;
  * create threads that generate other threads, from 1 up to Thread 50
  * print "Hello from Thread num" in reverse order
  * */
-public class ReverseHello extends Thread{
+public class ReverseHello extends Thread{ // score 2
 	
 	private static final int MAX_NUM = 50;
 	private static final int START_NUM = 1;
