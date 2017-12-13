@@ -1,3 +1,6 @@
+/* Good WOrk
+ * Total score 10
+*/
 package INFO5100.Assignment8;
 
 import java.io.BufferedReader;
