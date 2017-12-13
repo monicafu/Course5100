@@ -2,7 +2,7 @@ package INFO5100.Assignment7.Controller;
 
 public class Root {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException { // score 2
 		
 	        Device device = new Device();
 	        
