@@ -2,7 +2,7 @@ package INFO5100.Assignment7;
 import java.util.*;
 public class PascalTriangle {
 	
-	  public static void printPascalTriangle(int n){
+	  public static void printPascalTriangle(int n){ // score 2
 	        if ( n <= 0 ) return;
 	        ArrayList<Integer> pre = new ArrayList<>();
 	        pre.add(1);
