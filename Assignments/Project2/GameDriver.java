@@ -1,3 +1,7 @@
+/* Good Work
+ * Score 19
+ * you are setting spades as shortest if it contains Ace or King or Queen. While the requirement is other way round
+ */
 package INFO5100.Project2;
 
 import java.util.Scanner;
